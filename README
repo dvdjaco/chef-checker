@@ -1,0 +1,3 @@
+chef-checker
+
+A Nagios/Icinga plugin to monitor recent runs of chef-client.
