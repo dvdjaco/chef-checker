@@ -2,7 +2,7 @@
 
 require "time"
 require 'optparse'
-require 'debugger'
+#require 'debugger' # Uncomment to use debugger
 
 class ChefClientStatus
 
@@ -92,11 +92,11 @@ class ChefClientStatus
     t_now = Time.new
     
     # search for ERROR or FATAL messages in the log
-    @last_run.reverse_each do |line|
+    @last_run.each do |line|
       if ((line["ERROR"]) or (line["FATAL"]))
         @status[:state_code] = 2  # set the state to Critical
         @status[:state_info] = "The last run failed"
-        @status[:state_extinfo] = "Last error message: \"#{line}\""
+        @status[:state_extinfo] = "First error message: \"#{line}\""
         return
       end
     end
